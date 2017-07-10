@@ -44,6 +44,14 @@ protocol HeartRateDelegate {
         Current status of connection with BT heart rate monitor
      */
     func updated(btStatus: BTStatus)
+
+    /**
+     Reports battery level received from BT heart rate monitor
+     - Parameter batteryLevel:
+        Current battery level received from BT heart rate monitor
+     */
+    func updated(batteryLevel: UInt8)
+
 }
 
 class HeartRateDataSource: NSObject {
@@ -53,13 +61,16 @@ class HeartRateDataSource: NSObject {
     fileprivate(set) var manufacturer = ""
     fileprivate(set) var deviceData = ""
     fileprivate(set) var heartRate: UInt16 = 0
+    fileprivate(set) var batteryLevel: UInt8 = 0
 
     fileprivate let deviceInfoServiceUUID = "180A"
     fileprivate let heartRateServiceUUID = "180D"
+    fileprivate let batteryServiceUUID = "180F"
 
     fileprivate let measurementCharacteristicUUID = "2A37"
     fileprivate let bodyLocationCharacteristicUUID = "2A38"
     fileprivate let manufacturerNameCharacteristicUUID = "2A29"
+    fileprivate let batteryLeveleCharacteristicUUID = "2A19"
 
     fileprivate var centralManager: CBCentralManager?
     fileprivate var hrmPeripheral: CBPeripheral?
@@ -73,7 +84,7 @@ class HeartRateDataSource: NSObject {
 
     //MARK: CBCharacteristic Helpers
 
-    func getHeartBPMData(from characteristic: CBCharacteristic, error: Error?) {
+    fileprivate func getHeartBPMData(from characteristic: CBCharacteristic, error: Error?) {
         guard error == nil else {
             print("Heart rate data error: \(String(describing: error))")
             return
@@ -94,19 +105,36 @@ class HeartRateDataSource: NSObject {
 
     }
 
-    func getManufacturerName(from characteristic: CBCharacteristic) {
+    fileprivate func getManufacturerName(from characteristic: CBCharacteristic) {
         guard let data = characteristic.value,
             let manufacturerName = String(data: data, encoding: .utf8) else { return }
 
         manufacturer = "Manufacturer: \(manufacturerName)"
     }
 
-    func getBodyLocation(from characteristic: CBCharacteristic) {
+    fileprivate func getBodyLocation(from characteristic: CBCharacteristic) {
         guard let data = characteristic.value else { return }
         let bodyDataArray = [UInt8](data)
         let bodyLocation = bodyDataArray[0]
 
         bodyData = "Body location: \(bodyLocation == 1 ? "Chest" : "Undefined")"
+    }
+
+    fileprivate func getBatteryLevel(from characteristic: CBCharacteristic) {
+        guard let data = characteristic.value else { return }
+        let batteryLevelArray = [UInt8](data)
+        batteryLevel = batteryLevelArray[0]
+
+        delegate?.updated(batteryLevel: batteryLevel)
+    }
+
+    // MARK: Helpers
+
+    fileprivate func startBTScan() {
+        let services = [CBUUID(string: heartRateServiceUUID),
+                        CBUUID(string: deviceInfoServiceUUID),
+                        CBUUID(string: batteryServiceUUID)]
+        centralManager?.scanForPeripherals(withServices: services, options: nil)
     }
 
 }
@@ -165,16 +193,13 @@ extension HeartRateDataSource: CBCentralManagerDelegate {
             delegate?.updated(btStatus: .off)
             delegate?.updated(deviceInfo: "")
             delegate?.updated(heartRate: 0)
+
         case .poweredOn:
             print("BT hardware is powered on and ready")
             delegate?.updated(btStatus: .searching)
             // BT power on - start scan
-            let services = [CBUUID(string: heartRateServiceUUID),
-                            CBUUID(string: deviceInfoServiceUUID)]
-            for service in services {
-                print(service.uuidString)
-            }
-            centralManager?.scanForPeripherals(withServices: services, options: nil)
+            startBTScan()
+
         case .unauthorized:
             print("BT hardware is unautorized")
         case .unknown:
@@ -205,27 +230,46 @@ extension HeartRateDataSource: CBPeripheralDelegate {
                     didDiscoverCharacteristicsFor service: CBService,
                     error: Error?) {
 
-        if service.uuid == CBUUID(string: heartRateServiceUUID) {
+        switch service.uuid {
+        case CBUUID(string: heartRateServiceUUID):
             guard let characteristics = service.characteristics else { return }
             for characteristic in characteristics {
-                if characteristic.uuid == CBUUID(string: measurementCharacteristicUUID) {
+                switch characteristic.uuid {
+                case CBUUID(string: measurementCharacteristicUUID):
                     hrmPeripheral?.setNotifyValue(true, for: characteristic)
                     print("Found heart rate measurement characteristic")
-                } else if characteristic.uuid == CBUUID(string: bodyLocationCharacteristicUUID) {
+                case CBUUID(string: bodyLocationCharacteristicUUID):
                     hrmPeripheral?.readValue(for: characteristic)
                     print("Found body sensor location characteristic")
+                default:
+                    print("Characteristic \(characteristic) of service \(service) is not handled")
                 }
             }
-        }
 
-        if service.uuid == CBUUID(string: deviceInfoServiceUUID) {
+        case CBUUID(string: deviceInfoServiceUUID):
             guard let characteristics = service.characteristics else { return }
             for characteristic in characteristics {
                 if characteristic.uuid == CBUUID(string: manufacturerNameCharacteristicUUID) {
                     hrmPeripheral?.readValue(for: characteristic)
                     print("Found a device manufacturer name characteristic")
+                } else {
+                    print("Characteristic \(characteristic) of service \(service) is not handled")
                 }
             }
+
+        case CBUUID(string: batteryServiceUUID):
+            guard let characteristics = service.characteristics else { return }
+            for characteristic in characteristics {
+                if characteristic.uuid == CBUUID(string: batteryLeveleCharacteristicUUID) {
+                    hrmPeripheral?.readValue(for: characteristic)
+                    print("Found a battery level characteristic")
+                } else {
+                    print("Characteristic \(characteristic) of service \(service) is not handled")
+                }
+            }
+
+        default:
+            print("Service \(service) is not handled")
         }
 
     }
@@ -240,6 +284,8 @@ extension HeartRateDataSource: CBPeripheralDelegate {
             getManufacturerName(from: characteristic)
         case CBUUID(string: bodyLocationCharacteristicUUID):
             getBodyLocation(from: characteristic)
+        case CBUUID(string: batteryLeveleCharacteristicUUID):
+            getBatteryLevel(from: characteristic)
         default:
             print("Characteristic is not handled: \(characteristic)")
         }

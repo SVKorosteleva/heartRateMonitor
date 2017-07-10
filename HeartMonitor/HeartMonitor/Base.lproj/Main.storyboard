@@ -86,11 +86,34 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cpT-Rc-fYm">
+                                <rect key="frame" x="120" y="572" width="136" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmG-4g-mcv">
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.37884120139999999" blue="0.7459637429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-qZ-5sS">
+                                        <rect key="frame" x="100" y="0.0" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FQS-qZ-5sS" secondAttribute="height" identifier="s" id="FtH-wa-bIA"/>
+                                            <constraint firstAttribute="width" constant="36" id="UGr-3O-83J"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BHf-8z-0jS" firstAttribute="centerX" secondItem="4gv-SR-mFm" secondAttribute="centerX" id="5ej-FR-dnN"/>
                             <constraint firstItem="BHf-8z-0jS" firstAttribute="centerY" secondItem="4gv-SR-mFm" secondAttribute="centerY" id="Jzn-ho-HO1"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="cpT-Rc-fYm" secondAttribute="bottom" constant="10" id="Ll5-XS-OlA"/>
+                            <constraint firstItem="cpT-Rc-fYm" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Qzz-vV-gzt"/>
                             <constraint firstItem="Go3-du-x0D" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="sWU-xA-Pcq"/>
                             <constraint firstItem="Go3-du-x0D" firstAttribute="width" relation="lessThanOrEqual" secondItem="tsR-hK-woN" secondAttribute="width" id="xsV-PI-ePD"/>
                             <constraint firstItem="Go3-du-x0D" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="znP-sa-fsz"/>
@@ -98,6 +121,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Heart rate" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="batteryLevelLabel" destination="FQS-qZ-5sS" id="UEa-aw-gPe"/>
                         <outlet property="btHrmSearchActivityIndicator" destination="ghC-h2-WIn" id="YGl-fm-yKq"/>
                         <outlet property="btHrmStatusLabel" destination="Lky-pJ-FXa" id="okC-ch-OSX"/>
                         <outlet property="btHrmStatusStackView" destination="N5K-LZ-xXJ" id="Aiw-5g-N8T"/>

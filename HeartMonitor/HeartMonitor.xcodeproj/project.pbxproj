@@ -16,6 +16,7 @@
 		AA875FAF1F06CF4900157DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA875FAD1F06CF4900157DAF /* LaunchScreen.storyboard */; };
 		AA875FBA1F06CF4900157DAF /* HeartMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */; };
 		AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FC51F06D13E00157DAF /* HeartRateView.swift */; };
+		AAC1700C1F14218A001BB817 /* StartStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1700B1F14218A001BB817 /* StartStopButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartMonitorTests.swift; sourceTree = "<group>"; };
 		AA875FBB1F06CF4900157DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA875FC51F06D13E00157DAF /* HeartRateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateView.swift; sourceTree = "<group>"; };
+		AAC1700B1F14218A001BB817 /* StartStopButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartStopButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				AA875FA41F06CF4900157DAF /* HeartRateViewController.swift */,
 				AA875FC51F06D13E00157DAF /* HeartRateView.swift */,
 				AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */,
+				AAC1700B1F14218A001BB817 /* StartStopButton.swift */,
 			);
 			name = HeartRate;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC1700C1F14218A001BB817 /* StartStopButton.swift in Sources */,
 				AA875FA71F06CF4900157DAF /* SecondViewController.swift in Sources */,
 				AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */,
 				AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */,

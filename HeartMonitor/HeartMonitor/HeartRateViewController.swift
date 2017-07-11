@@ -16,10 +16,17 @@ class HeartRateViewController: UIViewController {
     @IBOutlet fileprivate weak var btHrmStatusLabel: UILabel!
     @IBOutlet fileprivate weak var btHrmStatusStackView: UIStackView!
     @IBOutlet fileprivate weak var batteryLevelLabel: UILabel!
+    @IBOutlet fileprivate weak var startButton: StartStopButton!
+    @IBOutlet fileprivate weak var stopButton: StartStopButton!
+    @IBOutlet fileprivate weak var trainingTimeLabel: UILabel!
 
     private let dataSource = HeartRateDataSource()
 
     fileprivate var pulseTimer: Timer?
+
+    private var trainingTimer: Timer?
+    private var startTrainingTime: Date?
+    private var trainingDuration: TimeInterval = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +34,8 @@ class HeartRateViewController: UIViewController {
         batteryLevelLabel.layer.cornerRadius = 18.0
         batteryLevelLabel.clipsToBounds = true
         batteryLevelLabel.text = ""
+
+        stopButton.isHidden = true
 
         dataSource.delegate = self
         dataSource.loadBluetooth()
@@ -45,6 +54,44 @@ class HeartRateViewController: UIViewController {
         pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
 
         layer.add(pulseAnimation, forKey: "scale")
+    }
+
+    func updateTrainingTimer() {
+        trainingDuration += 1
+        trainingTimeLabel.text = timeString(forTimeInterval: trainingDuration)
+    }
+
+    @IBAction func startButtonPressed(_ sender: Any) {
+        let trainingOngoing = trainingTimer?.isValid ?? false
+        trainingTimer?.invalidate()
+
+        if trainingOngoing {
+            startButton.setTitle("Resume", for: .normal)
+        } else {
+            startButton.setTitle("Pause", for: .normal)
+            if startTrainingTime == nil {
+                startTrainingTime = Date()
+                trainingTimeLabel.text = timeString(forTimeInterval: 0)
+                stopButton.isHidden = false
+                stopButton.setNeedsDisplay()
+            }
+
+            trainingTimer =
+                Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(HeartRateViewController.updateTrainingTimer),
+                                     userInfo: nil, repeats: true)
+        }
+    }
+
+
+    @IBAction func stopButtonPressed(_ sender: Any) {
+        trainingTimer?.invalidate()
+        trainingTimer = nil
+        startTrainingTime = nil
+        trainingDuration = 0
+        startButton.setTitle("Start", for: .normal)
+        stopButton.isHidden = true
     }
 
     fileprivate func text(btStatus: BTStatus) -> String {
@@ -71,6 +118,18 @@ class HeartRateViewController: UIViewController {
         default:
             return UIColor.black
         }
+    }
+
+    fileprivate func timeString(forTimeInterval interval: TimeInterval) -> String {
+        let totalSeconds = Int(interval)
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds - hours * 3600) / 60
+        let seconds = totalSeconds - hours * 3600 - minutes * 60
+        return "\(timeString(forTimeUnit: hours)):\(timeString(forTimeUnit: minutes)):\(timeString(forTimeUnit: seconds))"
+    }
+
+    fileprivate func timeString(forTimeUnit unit: Int) -> String {
+        return "\(unit < 10 ? "0" : "")\(unit)"
     }
 
 }

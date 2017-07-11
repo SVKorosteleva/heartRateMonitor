@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Go3-du-x0D">
-                                <rect key="frame" x="54" y="184.5" width="267" height="298.5"/>
+                                <rect key="frame" x="54" y="198.5" width="267" height="270.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-LZ-xXJ">
                                         <rect key="frame" x="0.0" y="0.0" width="267" height="40.5"/>
@@ -56,10 +57,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Connected: NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z9J-0H-1jQ">
-                                        <rect key="frame" x="13.5" y="170.5" width="240" height="128"/>
+                                        <rect key="frame" x="13.5" y="170.5" width="240" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="c7y-Vh-Rtr"/>
+                                            <constraint firstAttribute="height" constant="100" id="c7y-Vh-Rtr"/>
                                             <constraint firstAttribute="width" constant="240" id="chz-aK-6Mk"/>
                                         </constraints>
                                         <color key="textColor" red="1" green="0.37884120142577637" blue="0.74596374291652934" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +71,7 @@
                                 <variation key="heightClass=compact" axis="horizontal"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BHf-8z-0jS">
-                                <rect key="frame" x="170.5" y="260" width="34.5" height="60"/>
+                                <rect key="frame" x="170.5" y="274" width="34.5" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeG-zc-gVC">
                                         <rect key="frame" x="0.0" y="0.0" width="34.5" height="39.5"/>
@@ -87,7 +88,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cpT-Rc-fYm">
-                                <rect key="frame" x="120" y="572" width="136" height="36"/>
+                                <rect key="frame" x="119.5" y="572" width="136" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmG-4g-mcv">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="36"/>
@@ -107,13 +108,77 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-kS-kIM">
+                                <rect key="frame" x="115" y="20" width="145" height="127"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QjS-gt-WXG">
+                                        <rect key="frame" x="23" y="0.0" width="99" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Training time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imu-l3-NhX">
+                                                <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.37884120139999999" blue="0.7459637429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgv-xj-nFh">
+                                                <rect key="frame" x="0.0" y="25.5" width="99" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.66203303746005515" green="0.392462232913945" blue="0.71331694162436543" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AU9-Ui-if4">
+                                        <rect key="frame" x="0.0" y="57" width="145" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmF-o2-mzp" customClass="StartStopButton" customModule="HeartMonitor" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="FmF-o2-mzp" secondAttribute="height" id="nBB-hY-zML"/>
+                                                    <constraint firstAttribute="width" constant="70" id="sEF-4y-nGQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Start">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="start" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="startButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2TV-Hj-mOh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZ6-un-IsZ" customClass="StartStopButton" customModule="HeartMonitor" customModuleProvider="target">
+                                                <rect key="frame" x="75" y="0.0" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="hZ6-un-IsZ" secondAttribute="height" id="13j-NX-5nc"/>
+                                                    <constraint firstAttribute="width" priority="999" constant="70" id="zWn-iF-8qW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Stop">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="start" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="stopButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ra5-aL-ygr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <variation key="heightClass=compact" axis="horizontal"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BHf-8z-0jS" firstAttribute="centerX" secondItem="4gv-SR-mFm" secondAttribute="centerX" id="5ej-FR-dnN"/>
                             <constraint firstItem="BHf-8z-0jS" firstAttribute="centerY" secondItem="4gv-SR-mFm" secondAttribute="centerY" id="Jzn-ho-HO1"/>
+                            <constraint firstItem="rOJ-kS-kIM" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="20" id="KWD-NW-DPc"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="cpT-Rc-fYm" secondAttribute="bottom" constant="10" id="Ll5-XS-OlA"/>
                             <constraint firstItem="cpT-Rc-fYm" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Qzz-vV-gzt"/>
+                            <constraint firstItem="rOJ-kS-kIM" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="bnh-Ta-8DR"/>
                             <constraint firstItem="Go3-du-x0D" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="sWU-xA-Pcq"/>
                             <constraint firstItem="Go3-du-x0D" firstAttribute="width" relation="lessThanOrEqual" secondItem="tsR-hK-woN" secondAttribute="width" id="xsV-PI-ePD"/>
                             <constraint firstItem="Go3-du-x0D" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="znP-sa-fsz"/>
@@ -128,11 +193,14 @@
                         <outlet property="deviceInfoTextView" destination="Z9J-0H-1jQ" id="g49-sO-n6B"/>
                         <outlet property="heartRateValueLabel" destination="QeG-zc-gVC" id="G6o-Ht-s87"/>
                         <outlet property="heartRateView" destination="4gv-SR-mFm" id="Wlx-qt-EPc"/>
+                        <outlet property="startButton" destination="FmF-o2-mzp" id="swJ-n5-Icd"/>
+                        <outlet property="stopButton" destination="hZ6-un-IsZ" id="8Y1-8h-LPd"/>
+                        <outlet property="trainingTimeLabel" destination="bgv-xj-nFh" id="0Ss-9S-LEF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="735.20000000000005" y="-320.68965517241384"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="wg7-f3-ORb">

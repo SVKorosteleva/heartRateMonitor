@@ -10,12 +10,14 @@
 		AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */; };
 		AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA21F06CF4900157DAF /* AppDelegate.swift */; };
 		AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA41F06CF4900157DAF /* HeartRateViewController.swift */; };
-		AA875FA71F06CF4900157DAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA61F06CF4900157DAF /* SecondViewController.swift */; };
+		AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA61F06CF4900157DAF /* SettingsViewController.swift */; };
 		AA875FAA1F06CF4900157DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA875FA81F06CF4900157DAF /* Main.storyboard */; };
 		AA875FAC1F06CF4900157DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA875FAB1F06CF4900157DAF /* Assets.xcassets */; };
 		AA875FAF1F06CF4900157DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA875FAD1F06CF4900157DAF /* LaunchScreen.storyboard */; };
 		AA875FBA1F06CF4900157DAF /* HeartMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */; };
 		AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FC51F06D13E00157DAF /* HeartRateView.swift */; };
+		AA9191101F392B3F00A79C83 /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91910F1F392B3F00A79C83 /* PlusMinusButton.swift */; };
+		AA9191121F39326100A79C83 /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9191111F39326100A79C83 /* SettingsDataSource.swift */; };
 		AAC1700C1F14218A001BB817 /* StartStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1700B1F14218A001BB817 /* StartStopButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +36,7 @@
 		AA875F9F1F06CF4900157DAF /* HeartMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA875FA21F06CF4900157DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA875FA41F06CF4900157DAF /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
-		AA875FA61F06CF4900157DAF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AA875FA61F06CF4900157DAF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA875FA91F06CF4900157DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA875FAB1F06CF4900157DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA875FAE1F06CF4900157DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +45,8 @@
 		AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartMonitorTests.swift; sourceTree = "<group>"; };
 		AA875FBB1F06CF4900157DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA875FC51F06D13E00157DAF /* HeartRateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateView.swift; sourceTree = "<group>"; };
+		AA91910F1F392B3F00A79C83 /* PlusMinusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
+		AA9191111F39326100A79C83 /* SettingsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		AAC1700B1F14218A001BB817 /* StartStopButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartStopButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,8 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				AA875FC41F06D0D200157DAF /* HeartRate */,
+				AA91910E1F39272D00A79C83 /* Settings */,
 				AA875FA21F06CF4900157DAF /* AppDelegate.swift */,
-				AA875FA61F06CF4900157DAF /* SecondViewController.swift */,
 				AA875FA81F06CF4900157DAF /* Main.storyboard */,
 				AA875FAB1F06CF4900157DAF /* Assets.xcassets */,
 				AA875FAD1F06CF4900157DAF /* LaunchScreen.storyboard */,
@@ -114,6 +118,16 @@
 				AAC1700B1F14218A001BB817 /* StartStopButton.swift */,
 			);
 			name = HeartRate;
+			sourceTree = "<group>";
+		};
+		AA91910E1F39272D00A79C83 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AA875FA61F06CF4900157DAF /* SettingsViewController.swift */,
+				AA91910F1F392B3F00A79C83 /* PlusMinusButton.swift */,
+				AA9191111F39326100A79C83 /* SettingsDataSource.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,11 +235,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAC1700C1F14218A001BB817 /* StartStopButton.swift in Sources */,
-				AA875FA71F06CF4900157DAF /* SecondViewController.swift in Sources */,
+				AA9191101F392B3F00A79C83 /* PlusMinusButton.swift in Sources */,
+				AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */,
 				AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */,
 				AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */,
 				AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */,
 				AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */,
+				AA9191121F39326100A79C83 /* SettingsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

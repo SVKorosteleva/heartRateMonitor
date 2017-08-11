@@ -61,7 +61,7 @@ class SettingsViewController: UIViewController {
 
     @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text,
-            let newValue = UInt(text) else { return }
+            let newValue = UInt32(text) else { return }
 
         if textField == ageTextField {
             dataSource.update(age: newValue)

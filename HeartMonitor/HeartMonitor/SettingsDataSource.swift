@@ -14,21 +14,25 @@ class SettingsDataSource {
 
     var delegate: SettingsDataDelegate?
 
-    private(set) var age: UInt
-    private(set) var restHeartRate: UInt
-    private(set) var minFatBurnHeartRate: UInt
-    private(set) var maxFatBurnHeartRate: UInt
+    private(set) var age: UInt32
+    private(set) var restHeartRate: UInt32
+    private(set) var minFatBurnHeartRate: UInt32
+    private(set) var maxFatBurnHeartRate: UInt32
 
-    var maxHeartRate: UInt {
+    private var storeManager: SettingsStorageManager? {
+        return DataStorageManager.shared.settingsManager
+    }
+
+    var maxHeartRate: UInt32 {
         return 220 - age
     }
 
-    var heartRateReserve: UInt {
+    var heartRateReserve: UInt32 {
         return maxHeartRate - restHeartRate
     }
 
     init() {
-        // TODO: Read from CoreData
+        // Init with default values
 
         self.age = 20
         self.restHeartRate = 80
@@ -36,19 +40,31 @@ class SettingsDataSource {
         self.minFatBurnHeartRate = 140
         self.maxFatBurnHeartRate = 170
 
-        recalculateFatBurnRates()
+        recalculateFatBurnRates(save: false)
+
+        // Read actual values from data storage
+        let settings = storeManager?.settings()
+
+        self.age = settings?[SettingsKey.age] ?? self.age
+        self.restHeartRate = settings?[SettingsKey.restingHeartRate] ?? self.restHeartRate
+        self.minFatBurnHeartRate =
+            settings?[SettingsKey.fatBurnMinHeartRate] ?? self.minFatBurnHeartRate
+        self.maxFatBurnHeartRate =
+            settings?[SettingsKey.fatBurnMaxHeartRate] ?? self.maxFatBurnHeartRate
     }
 
-    func update(age: UInt) {
+    func update(age: UInt32) {
         self.age = age
 
-        recalculateFatBurnRates()
+        storeManager?.save(SettingsValue(age), forSetting: .age)
+        recalculateFatBurnRates(save: true)
     }
 
-    func update(restHeartRate: UInt) {
+    func update(restHeartRate: UInt32) {
         self.restHeartRate = restHeartRate
 
-        recalculateFatBurnRates()
+        storeManager?.save(SettingsValue(restHeartRate), forSetting: .restingHeartRate)
+        recalculateFatBurnRates(save: true)
     }
 
     func maxFatBurnHeartRate(increment: Bool) {
@@ -58,6 +74,7 @@ class SettingsDataSource {
             maxFatBurnHeartRate -= 1
         }
 
+        storeManager?.save(maxFatBurnHeartRate, forSetting: .fatBurnMaxHeartRate)
         delegate?.heartRatesUpdated()
     }
 
@@ -68,18 +85,24 @@ class SettingsDataSource {
             minFatBurnHeartRate -= 1
         }
 
+        storeManager?.save(minFatBurnHeartRate, forSetting: .fatBurnMinHeartRate)
         delegate?.heartRatesUpdated()
     }
 
-    private func fatBurnRates() -> (min: UInt, max: UInt) {
-        return (min: UInt(0.5 * Double(heartRateReserve)) + restHeartRate,
-                max: UInt(0.75 * Double(heartRateReserve)) + restHeartRate)
+    private func fatBurnRates() -> (min: UInt32, max: UInt32) {
+        return (min: UInt32(0.5 * Double(heartRateReserve)) + restHeartRate,
+                max: UInt32(0.75 * Double(heartRateReserve)) + restHeartRate)
     }
 
-    private func recalculateFatBurnRates() {
+    private func recalculateFatBurnRates(save: Bool) {
         let rates = fatBurnRates()
         minFatBurnHeartRate = rates.min
         maxFatBurnHeartRate = rates.max
+
+        if save {
+            storeManager?.save(minFatBurnHeartRate, forSetting: .fatBurnMinHeartRate)
+            storeManager?.save(maxFatBurnHeartRate, forSetting: .fatBurnMaxHeartRate)
+        }
 
         delegate?.heartRatesUpdated()
     }

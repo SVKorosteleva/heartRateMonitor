@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */; };
+		AA3E33EE1F3CD45D0000FD2E /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33ED1F3CD45D0000FD2E /* DataStorageManager.swift */; };
+		AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */; };
 		AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */; };
 		AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA21F06CF4900157DAF /* AppDelegate.swift */; };
 		AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA41F06CF4900157DAF /* HeartRateViewController.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA3E33EB1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartRateDataModel.xcdatamodel; sourceTree = "<group>"; };
+		AA3E33ED1F3CD45D0000FD2E /* DataStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
+		AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStorageManager.swift; sourceTree = "<group>"; };
 		AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateDataSource.swift; sourceTree = "<group>"; };
 		AA875F9F1F06CF4900157DAF /* HeartMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA875FA21F06CF4900157DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA3E33E91F3A5F5D0000FD2E /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */,
+				AA3E33ED1F3CD45D0000FD2E /* DataStorageManager.swift */,
+				AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */,
+			);
+			name = DataStorage;
+			sourceTree = "<group>";
+		};
 		AA875F961F06CF4900157DAF = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +107,7 @@
 			children = (
 				AA875FC41F06D0D200157DAF /* HeartRate */,
 				AA91910E1F39272D00A79C83 /* Settings */,
+				AA3E33E91F3A5F5D0000FD2E /* DataStorage */,
 				AA875FA21F06CF4900157DAF /* AppDelegate.swift */,
 				AA875FA81F06CF4900157DAF /* Main.storyboard */,
 				AA875FAB1F06CF4900157DAF /* Assets.xcassets */,
@@ -235,9 +252,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAC1700C1F14218A001BB817 /* StartStopButton.swift in Sources */,
+				AA3E33EE1F3CD45D0000FD2E /* DataStorageManager.swift in Sources */,
 				AA9191101F392B3F00A79C83 /* PlusMinusButton.swift in Sources */,
+				AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */,
 				AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */,
 				AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */,
+				AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */,
 				AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */,
 				AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */,
 				AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */,
@@ -461,6 +481,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AA3E33EB1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodel */,
+			);
+			currentVersion = AA3E33EB1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodel */;
+			path = HeartRateDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AA875F971F06CF4900157DAF /* Project object */;
 }

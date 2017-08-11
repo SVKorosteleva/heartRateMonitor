@@ -240,7 +240,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.41776413740000001" green="0.62699460839999999" blue="0.91170288710000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -260,7 +260,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.41776413740000001" green="0.62699460839999999" blue="0.91170288710000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>

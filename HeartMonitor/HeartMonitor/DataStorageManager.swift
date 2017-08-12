@@ -9,7 +9,7 @@
 import CoreData
 
 class DataStorageManager {
-    static var shared = DataStorageManager()
+    private(set) static var shared = DataStorageManager()
 
     private(set) var settingsManager: SettingsStorageManager?
 

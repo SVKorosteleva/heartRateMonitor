@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet private weak var heartRateReseveLabel: UILabel!
     @IBOutlet private weak var backgroundView: UIView!
 
-    private var dataSource = SettingsDataSource()
+    private var dataSource = SettingsDataSource.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()

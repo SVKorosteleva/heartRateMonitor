@@ -20,9 +20,21 @@ class HeartRateViewController: UIViewController {
     @IBOutlet fileprivate weak var stopButton: StartStopButton!
     @IBOutlet fileprivate weak var trainingTimeLabel: UILabel!
 
+    @IBOutlet weak var heartRateLevelView: HeartRateLevelView!
+    @IBOutlet fileprivate weak var minHeartRateLabel: UILabel!
+    @IBOutlet fileprivate weak var maxHeartRateLabel: UILabel!
+    @IBOutlet fileprivate weak var minFatBurnHeartRateLabel: UILabel!
+    @IBOutlet fileprivate weak var maxFatBurnHeartRateLabel: UILabel!
+
+    @IBOutlet fileprivate weak var minFatBurnCenterXConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var maxFatBurnCenterXConstraint: NSLayoutConstraint!
+
     private let dataSource = HeartRateDataSource()
+    private let settingsDataSource = SettingsDataSource.shared
 
     fileprivate var pulseTimer: Timer?
+    fileprivate var minHeartRate: UInt32 = 80
+    fileprivate var maxHeartRate: UInt32 = 200
 
     private var trainingTimer: Timer?
     private var startTrainingTime: Date?
@@ -41,7 +53,25 @@ class HeartRateViewController: UIViewController {
         dataSource.loadBluetooth()
     }
 
-    func doHeartBit() {
+    override func viewWillAppear(_ animated: Bool) {
+        minHeartRate = settingsDataSource.restHeartRate
+        maxHeartRate = settingsDataSource.maxHeartRate
+
+        minHeartRateLabel.text = String(minHeartRate)
+        maxHeartRateLabel.text = String(maxHeartRate)
+        minFatBurnHeartRateLabel.text = String(settingsDataSource.minFatBurnHeartRate)
+        maxFatBurnHeartRateLabel.text = String(settingsDataSource.maxFatBurnHeartRate)
+
+        let baseWidth = heartRateLevelView.bounds.size.width
+        let relativeMin =
+            CGFloat(settingsDataSource.minFatBurnHeartRate - minHeartRate) / CGFloat(maxHeartRate - minHeartRate)
+        let relativeMax = CGFloat(settingsDataSource.maxFatBurnHeartRate - minHeartRate) / CGFloat(maxHeartRate - minHeartRate)
+
+        minFatBurnCenterXConstraint.constant = relativeMin * baseWidth
+        maxFatBurnCenterXConstraint.constant = relativeMax * baseWidth
+    }
+
+    @objc fileprivate func doHeartBit() {
         let layer = heartRateView.layer
 
         let pulseAnimation = CABasicAnimation(keyPath: "transform.scale")
@@ -56,7 +86,7 @@ class HeartRateViewController: UIViewController {
         layer.add(pulseAnimation, forKey: "scale")
     }
 
-    func updateTrainingTimer() {
+    @objc fileprivate func updateTrainingTimer() {
         trainingDuration += 1
         trainingTimeLabel.text = timeString(forTimeInterval: trainingDuration)
     }
@@ -150,6 +180,9 @@ extension HeartRateViewController: HeartRateDelegate {
                                           selector: #selector(HeartRateViewController.doHeartBit),
                                           userInfo: nil,
                                           repeats: true)
+
+        heartRateLevelView.level =
+            CGFloat(UInt32(heartRate) - minHeartRate) / CGFloat(maxHeartRate - minHeartRate)
     }
 
     func updated(batteryLevel: UInt8) {

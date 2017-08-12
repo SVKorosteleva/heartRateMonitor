@@ -12,6 +12,8 @@ protocol SettingsDataDelegate {
 
 class SettingsDataSource {
 
+    private(set) static var shared = SettingsDataSource()
+
     var delegate: SettingsDataDelegate?
 
     private(set) var age: UInt32
@@ -31,7 +33,7 @@ class SettingsDataSource {
         return maxHeartRate - restHeartRate
     }
 
-    init() {
+    private init() {
         // Init with default values
 
         self.age = 20

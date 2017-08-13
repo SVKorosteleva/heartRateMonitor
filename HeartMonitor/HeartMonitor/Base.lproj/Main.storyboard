@@ -272,6 +272,7 @@
                     <tabBarItem key="tabBarItem" title="Heart rate" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="batteryLevelLabel" destination="FQS-qZ-5sS" id="UEa-aw-gPe"/>
+                        <outlet property="batteryLevelStackView" destination="cpT-Rc-fYm" id="965-yb-HRA"/>
                         <outlet property="btHrmSearchActivityIndicator" destination="ghC-h2-WIn" id="YGl-fm-yKq"/>
                         <outlet property="btHrmStatusLabel" destination="Lky-pJ-FXa" id="okC-ch-OSX"/>
                         <outlet property="btHrmStatusStackView" destination="N5K-LZ-xXJ" id="Aiw-5g-N8T"/>

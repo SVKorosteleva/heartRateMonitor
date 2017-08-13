@@ -41,6 +41,9 @@ class HeartRateLevelView: UIView {
 
         let gradientPath = UIBezierPath()
         let maxX = rect.width * level
+
+        guard maxX > cornerRadius else { return }
+
         gradientPath.move(to: CGPoint(x: maxX, y: 0))
         gradientPath.addLine(to: CGPoint(x: cornerRadius, y: 0))
         gradientPath.addArc(withCenter: CGPoint(x: cornerRadius, y: cornerRadius),

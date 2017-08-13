@@ -15,7 +15,10 @@ class HeartRateViewController: UIViewController {
     @IBOutlet fileprivate weak var btHrmSearchActivityIndicator: UIActivityIndicatorView!
     @IBOutlet fileprivate weak var btHrmStatusLabel: UILabel!
     @IBOutlet fileprivate weak var btHrmStatusStackView: UIStackView!
+
     @IBOutlet fileprivate weak var batteryLevelLabel: UILabel!
+    @IBOutlet fileprivate weak var batteryLevelStackView: UIStackView!
+
     @IBOutlet fileprivate weak var startButton: StartStopButton!
     @IBOutlet fileprivate weak var stopButton: StartStopButton!
     @IBOutlet fileprivate weak var trainingTimeLabel: UILabel!
@@ -46,6 +49,9 @@ class HeartRateViewController: UIViewController {
         batteryLevelLabel.layer.cornerRadius = 18.0
         batteryLevelLabel.clipsToBounds = true
         batteryLevelLabel.text = ""
+        batteryLevelStackView.isHidden = true
+
+        heartRateLevelView.level = 0
 
         stopButton.isHidden = true
 
@@ -139,11 +145,11 @@ class HeartRateViewController: UIViewController {
 
     fileprivate func color(forBatteryLevel level: Float) -> UIColor {
         switch level {
-        case 0..<0.3:
+        case 0..<0.1:
             return UIColor.red
-        case 0.3..<0.7:
+        case 0.1..<0.5:
             return UIColor.yellow
-        case 0.7...1:
+        case 0.5...1:
             return UIColor.green
         default:
             return UIColor.black
@@ -188,6 +194,8 @@ extension HeartRateViewController: HeartRateDelegate {
     func updated(batteryLevel: UInt8) {
         batteryLevelLabel.backgroundColor = color(forBatteryLevel: Float(batteryLevel) / 100.0)
         batteryLevelLabel.text = "\(batteryLevel)%"
+
+        batteryLevelStackView.isHidden = batteryLevel > 50
     }
 
     func updated(btStatus: BTStatus) {

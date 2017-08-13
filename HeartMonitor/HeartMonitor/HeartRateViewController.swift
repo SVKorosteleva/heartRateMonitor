@@ -23,7 +23,7 @@ class HeartRateViewController: UIViewController {
     @IBOutlet fileprivate weak var stopButton: StartStopButton!
     @IBOutlet fileprivate weak var trainingTimeLabel: UILabel!
 
-    @IBOutlet weak var heartRateLevelView: HeartRateLevelView!
+    @IBOutlet fileprivate weak var heartRateLevelView: HeartRateLevelView!
     @IBOutlet fileprivate weak var minHeartRateLabel: UILabel!
     @IBOutlet fileprivate weak var maxHeartRateLabel: UILabel!
     @IBOutlet fileprivate weak var minFatBurnHeartRateLabel: UILabel!

@@ -9,34 +9,27 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    @IBOutlet private weak var ageTextField: UITextField!
-    @IBOutlet private weak var restingHeartRateTextField: UITextField!
+    @IBOutlet fileprivate weak var ageTextField: UITextField!
+    @IBOutlet fileprivate weak var restingHeartRateTextField: UITextField!
     @IBOutlet private weak var minHeartRateTextField: UITextField!
     @IBOutlet private weak var maxHeartRateTextField: UITextField!
     @IBOutlet private weak var maxHeartRateLabel: UILabel!
     @IBOutlet private weak var heartRateReseveLabel: UILabel!
-    @IBOutlet private weak var backgroundView: UIView!
+    @IBOutlet private weak var pickerView: UIPickerView!
 
-    private var dataSource = SettingsDataSource.shared
+    fileprivate var dataSource = SettingsDataSource.shared
+
+    fileprivate let ageData: [UInt32] = Array(1...100)
+    fileprivate let heartRateData: [UInt32] = Array(0...220)
+
+    fileprivate var pickerHeartRate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         dataSource.delegate = self
         fillData()
-
-        ageTextField.addTarget(self,
-                               action: #selector(SettingsViewController.textFieldDidChange(_:)),
-                               for: .editingChanged)
-        restingHeartRateTextField
-            .addTarget(self,
-                       action: #selector(SettingsViewController.textFieldDidChange(_:)),
-                       for: .editingChanged)
-
-        let tapGestureRecognizer =
-            UITapGestureRecognizer(target: self,
-                                   action: #selector(SettingsViewController.backgroundTapGesture))
-        backgroundView.addGestureRecognizer(tapGestureRecognizer)
+        pickerView.isHidden = true
     }
 
     fileprivate func fillData() {
@@ -59,16 +52,17 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.text,
-            let newValue = UInt32(text) else { return }
+    @IBAction private func changeButtonTap(_ sender: UIButton) {
+        pickerHeartRate = sender.tag == 1
 
-        if textField == ageTextField {
-            dataSource.update(age: newValue)
-        } else if textField == restingHeartRateTextField {
-            dataSource.update(restHeartRate: newValue)
+        pickerView.reloadAllComponents()
+        let value = pickerHeartRate ? dataSource.restHeartRate : dataSource.age
+        if let index = pickerHeartRate
+            ? heartRateData.index(of: value)
+            : ageData.index(of: value) {
+            pickerView.selectRow(index, inComponent: 0, animated: false)
         }
-
+        pickerView.isHidden = false
     }
 
     @objc private func backgroundTapGesture() {
@@ -84,6 +78,42 @@ extension SettingsViewController: SettingsDataDelegate {
         fillData()
     }
 
+}
+
+extension SettingsViewController: UIPickerViewDataSource {
+
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return pickerHeartRate ? heartRateData.count : ageData.count
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+}
+
+extension SettingsViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        return pickerHeartRate ? String(heartRateData[row]) : String(ageData[row])
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let value = pickerHeartRate ? heartRateData[row] : ageData[row]
+        let textField = pickerHeartRate ? restingHeartRateTextField : ageTextField
+
+        textField?.text = String(value)
+
+        if pickerHeartRate {
+            dataSource.update(restHeartRate: value)
+        } else {
+            dataSource.update(age: value)
+        }
+
+        pickerView.isHidden = true
+    }
 }
 
 

@@ -187,8 +187,9 @@ extension HeartRateViewController: HeartRateDelegate {
                                           userInfo: nil,
                                           repeats: true)
 
-        heartRateLevelView.level =
-            CGFloat(UInt32(heartRate) - minHeartRate) / CGFloat(maxHeartRate - minHeartRate)
+        heartRateLevelView.level = UInt32(heartRate) < minHeartRate
+            ? 0
+            : CGFloat(UInt32(heartRate) - minHeartRate) / CGFloat(maxHeartRate - minHeartRate)
     }
 
     func updated(batteryLevel: UInt8) {

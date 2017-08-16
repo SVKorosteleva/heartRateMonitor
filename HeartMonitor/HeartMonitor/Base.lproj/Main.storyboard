@@ -269,7 +269,7 @@
                             <constraint firstItem="Go3-du-x0D" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="znP-sa-fsz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Heart rate" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Heart rate" image="HeartRateTab" selectedImage="HeartRateTab" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="batteryLevelLabel" destination="FQS-qZ-5sS" id="UEa-aw-gPe"/>
                         <outlet property="batteryLevelStackView" destination="cpT-Rc-fYm" id="965-yb-HRA"/>
@@ -557,7 +557,7 @@
                             <constraint firstAttribute="trailing" secondItem="e19-su-1Zl" secondAttribute="trailing" id="s3I-t4-krt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsTab" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="ageTextField" destination="nuc-KK-MZM" id="Sy2-hb-CXH"/>
                         <outlet property="heartRateReseveLabel" destination="Cgq-Lw-0mL" id="dha-j0-Hgk"/>
@@ -581,6 +581,8 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="1" green="0.2321189031" blue="0.65338529079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -593,7 +595,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="HeartRateTab" width="25" height="25"/>
+        <image name="SettingsTab" width="30" height="30"/>
     </resources>
 </document>

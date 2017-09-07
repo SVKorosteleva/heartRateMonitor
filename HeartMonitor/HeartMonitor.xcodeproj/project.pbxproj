@@ -12,13 +12,14 @@
 		AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */; };
 		AA3E33F21F3FB7970000FD2E /* HeartRateLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33F11F3FB7970000FD2E /* HeartRateLevelView.swift */; };
 		AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */; };
+		AA6F1E0A1F6202C500DD4716 /* SettingsDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F1E091F6202C500DD4716 /* SettingsDataSourceTest.swift */; };
 		AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA21F06CF4900157DAF /* AppDelegate.swift */; };
 		AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA41F06CF4900157DAF /* HeartRateViewController.swift */; };
 		AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FA61F06CF4900157DAF /* SettingsViewController.swift */; };
 		AA875FAA1F06CF4900157DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA875FA81F06CF4900157DAF /* Main.storyboard */; };
 		AA875FAC1F06CF4900157DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA875FAB1F06CF4900157DAF /* Assets.xcassets */; };
 		AA875FAF1F06CF4900157DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA875FAD1F06CF4900157DAF /* LaunchScreen.storyboard */; };
-		AA875FBA1F06CF4900157DAF /* HeartMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */; };
+		AA875FBA1F06CF4900157DAF /* HeartRateDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FB91F06CF4900157DAF /* HeartRateDataSourceTest.swift */; };
 		AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA875FC51F06D13E00157DAF /* HeartRateView.swift */; };
 		AA9191101F392B3F00A79C83 /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91910F1F392B3F00A79C83 /* PlusMinusButton.swift */; };
 		AA9191121F39326100A79C83 /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9191111F39326100A79C83 /* SettingsDataSource.swift */; };
@@ -41,6 +42,7 @@
 		AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStorageManager.swift; sourceTree = "<group>"; };
 		AA3E33F11F3FB7970000FD2E /* HeartRateLevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateLevelView.swift; sourceTree = "<group>"; };
 		AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateDataSource.swift; sourceTree = "<group>"; };
+		AA6F1E091F6202C500DD4716 /* SettingsDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSourceTest.swift; sourceTree = "<group>"; };
 		AA875F9F1F06CF4900157DAF /* HeartMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA875FA21F06CF4900157DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA875FA41F06CF4900157DAF /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		AA875FAE1F06CF4900157DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA875FB01F06CF4900157DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA875FB51F06CF4900157DAF /* HeartMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartMonitorTests.swift; sourceTree = "<group>"; };
+		AA875FB91F06CF4900157DAF /* HeartRateDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateDataSourceTest.swift; sourceTree = "<group>"; };
 		AA875FBB1F06CF4900157DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA875FC51F06D13E00157DAF /* HeartRateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateView.swift; sourceTree = "<group>"; };
 		AA91910F1F392B3F00A79C83 /* PlusMinusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
@@ -140,7 +142,8 @@
 		AA875FB81F06CF4900157DAF /* HeartMonitorTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA875FB91F06CF4900157DAF /* HeartMonitorTests.swift */,
+				AA875FB91F06CF4900157DAF /* HeartRateDataSourceTest.swift */,
+				AA6F1E091F6202C500DD4716 /* SettingsDataSourceTest.swift */,
 				AA875FBB1F06CF4900157DAF /* Info.plist */,
 			);
 			path = HeartMonitorTests;
@@ -289,7 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA875FBA1F06CF4900157DAF /* HeartMonitorTests.swift in Sources */,
+				AA875FBA1F06CF4900157DAF /* HeartRateDataSourceTest.swift in Sources */,
+				AA6F1E0A1F6202C500DD4716 /* SettingsDataSourceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

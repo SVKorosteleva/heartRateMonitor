@@ -596,6 +596,6 @@
     </scenes>
     <resources>
         <image name="HeartRateTab" width="25" height="25"/>
-        <image name="SettingsTab" width="30" height="30"/>
+        <image name="SettingsTab" width="25" height="25"/>
     </resources>
 </document>

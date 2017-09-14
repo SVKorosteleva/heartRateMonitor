@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1B77BE1F6763B000D86ACB /* TrainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */; };
+		AA1B77C01F6770A900D86ACB /* TrainingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */; };
 		AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */; };
 		AA3E33EE1F3CD45D0000FD2E /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33ED1F3CD45D0000FD2E /* DataStorageManager.swift */; };
 		AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataViewController.swift; sourceTree = "<group>"; };
+		AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingGraphView.swift; sourceTree = "<group>"; };
 		AA3E33EB1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartRateDataModel.xcdatamodel; sourceTree = "<group>"; };
 		AA3E33ED1F3CD45D0000FD2E /* DataStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
 		AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStorageManager.swift; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA1B77BC1F67631A00D86ACB /* TrainingData */ = {
+			isa = PBXGroup;
+			children = (
+				AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */,
+				AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */,
+			);
+			name = TrainingData;
+			sourceTree = "<group>";
+		};
 		AA3E33E91F3A5F5D0000FD2E /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 				AA875FA81F06CF4900157DAF /* Main.storyboard */,
 				AA875FC41F06D0D200157DAF /* HeartRate */,
 				AA91910E1F39272D00A79C83 /* Settings */,
+				AA1B77BC1F67631A00D86ACB /* TrainingData */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -278,11 +292,13 @@
 				AA9191101F392B3F00A79C83 /* PlusMinusButton.swift in Sources */,
 				AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */,
 				AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */,
+				AA1B77C01F6770A900D86ACB /* TrainingGraphView.swift in Sources */,
 				AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */,
 				AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */,
 				AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */,
 				AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */,
 				AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */,
+				AA1B77BE1F6763B000D86ACB /* TrainingDataViewController.swift in Sources */,
 				AA3E33F21F3FB7970000FD2E /* HeartRateLevelView.swift in Sources */,
 				AA9191121F39326100A79C83 /* SettingsDataSource.swift in Sources */,
 			);

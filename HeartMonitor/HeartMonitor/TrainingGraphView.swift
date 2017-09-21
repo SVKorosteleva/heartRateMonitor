@@ -26,8 +26,19 @@ class TrainingGraphView: UIView {
         }
     }
 
-    var heartRateValues: [UInt32] =
-        [100, 130, 140, 135, 138, 143, 152, 160, 168, 175, 169, 163] {
+    var heartRateValues: [HRMeasurement] =
+        [HRMeasurement(heartRate: 100, seconds: 0),
+         HRMeasurement(heartRate: 130, seconds: 30),
+         HRMeasurement(heartRate: 140, seconds: 60),
+         HRMeasurement(heartRate: 135, seconds: 90),
+         HRMeasurement(heartRate: 138, seconds: 120),
+         HRMeasurement(heartRate: 143, seconds: 150),
+         HRMeasurement(heartRate: 152, seconds: 180),
+         HRMeasurement(heartRate: 160, seconds: 200),
+         HRMeasurement(heartRate: 168, seconds: 220),
+         HRMeasurement(heartRate: 175, seconds: 250),
+         HRMeasurement(heartRate: 169, seconds: 280),
+         HRMeasurement(heartRate: 163, seconds: 300)] {
         didSet {
             setNeedsDisplay()
             updateTimeAxisLabels()
@@ -76,7 +87,9 @@ class TrainingGraphView: UIView {
     }
 
     private var numberOfMinutes: Int {
-        return Int(ceil(Double(heartRateValues.count + 1) / 2.0))
+        let maxSeconds =
+            heartRateValues.sorted(by: { $0.seconds > $1.seconds}).first?.seconds ?? 0
+        return Int(ceil(Double(maxSeconds) / 60.0))
     }
 
     private var maxTimeValue: Int {
@@ -108,16 +121,22 @@ class TrainingGraphView: UIView {
             let heartRateRange =
                 CGFloat(self.heartRateLevels.max - self.heartRateLevels.rest)
             let heartRateLevel =
-                CGFloat(self.heartRateValues[i] - self.heartRateLevels.rest) / heartRateRange
+                CGFloat(self.heartRateValues[i].heartRate - self.heartRateLevels.rest) / heartRateRange
             return self.topMargin + (1.0 - heartRateLevel) * heartRateRange
         }
 
         let x0 = leftMargin
-        let dx = (rect.width - 2 * leftMargin) / CGFloat(2 * maxTimeValue)
+        let heartRateX = { [unowned self] (i: Int) -> CGFloat in
+            let totalWidth = rect.width - 2 * self.leftMargin
+            let xi =
+                totalWidth * CGFloat(self.heartRateValues[i].seconds)
+                    / (CGFloat(self.maxTimeValue) * 60.0)
+            return x0 + xi
+        }
 
         graphPath.move(to: CGPoint(x: x0, y: heartRateY(0)))
         for i in 1..<heartRateValues.count {
-            graphPath.addLine(to: CGPoint(x: x0 + CGFloat(i) * dx, y: heartRateY(i)))
+            graphPath.addLine(to: CGPoint(x: heartRateX(i), y: heartRateY(i)))
         }
 
         graphPath.lineWidth = graphLineWidth

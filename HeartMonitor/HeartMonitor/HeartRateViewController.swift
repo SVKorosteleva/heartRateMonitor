@@ -22,6 +22,7 @@ class HeartRateViewController: UIViewController {
     @IBOutlet fileprivate weak var startButton: StartStopButton!
     @IBOutlet fileprivate weak var stopButton: StartStopButton!
     @IBOutlet fileprivate weak var trainingTimeLabel: UILabel!
+    @IBOutlet fileprivate weak var showTrainingDataButton: UIButton!
 
     @IBOutlet fileprivate weak var heartRateLevelView: HeartRateLevelView!
     @IBOutlet fileprivate weak var minHeartRateLabel: UILabel!
@@ -40,8 +41,10 @@ class HeartRateViewController: UIViewController {
     fileprivate var maxHeartRate: UInt32 = 200
 
     private var trainingTimer: Timer?
+    private var saveDataTimer: Timer?
     private var startTrainingTime: Date?
     private var trainingDuration: TimeInterval = 0
+    private var currentTraining: Training?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +57,7 @@ class HeartRateViewController: UIViewController {
         heartRateLevelView.level = 0
 
         stopButton.isHidden = true
+        showTrainingDataButton.isHidden = true
 
         dataSource.delegate = self
         dataSource.loadBluetooth()
@@ -77,6 +81,12 @@ class HeartRateViewController: UIViewController {
         maxFatBurnCenterXConstraint.constant = relativeMax * baseWidth
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let trainingDataVC
+            = segue.destination as? TrainingDataViewController else { return }
+        trainingDataVC.training = currentTraining
+    }
+
     @objc fileprivate func doHeartBit() {
         let layer = heartRateView.layer
 
@@ -97,9 +107,18 @@ class HeartRateViewController: UIViewController {
         trainingTimeLabel.text = timeString(forTimeInterval: trainingDuration)
     }
 
+    @objc fileprivate func saveTrainingData() {
+        guard let currentTraining = currentTraining else { return }
+        DataStorageManager.shared.trainingsManager?
+            .addMeasurement(UInt32(dataSource.heartRate),
+                            duration: UInt32(trainingDuration),
+                            to: currentTraining)
+    }
+
     @IBAction func startButtonPressed(_ sender: Any) {
         let trainingOngoing = trainingTimer?.isValid ?? false
         trainingTimer?.invalidate()
+        saveDataTimer?.invalidate()
 
         if trainingOngoing {
             startButton.setTitle("Resume", for: .normal)
@@ -110,13 +129,25 @@ class HeartRateViewController: UIViewController {
                 trainingTimeLabel.text = timeString(forTimeInterval: 0)
                 stopButton.isHidden = false
                 stopButton.setNeedsDisplay()
+                
+                currentTraining =
+                    DataStorageManager.shared.trainingsManager?.createTraining()
+                showTrainingDataButton.isHidden = false
             }
 
             trainingTimer =
                 Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(HeartRateViewController.updateTrainingTimer),
-                                     userInfo: nil, repeats: true)
+                                     userInfo: nil,
+                                     repeats: true)
+
+            saveDataTimer =
+                Timer.scheduledTimer(timeInterval: 30.0,
+                                     target: self,
+                                     selector: #selector(HeartRateViewController.saveTrainingData),
+                                     userInfo: nil,
+                                     repeats: true)
         }
     }
 

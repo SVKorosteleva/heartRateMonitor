@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HeartRateMeasurement" representedClassName="HeartRateMeasurement" syncable="YES" codeGenerationType="class">
+        <attribute name="heartRate" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="secondsFromBeginning" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="measurements" inverseEntity="Training" syncable="YES"/>
+    </entity>
     <entity name="Settings" representedClassName="Settings" syncable="YES" codeGenerationType="class">
         <attribute name="settingKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="settingValue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="Training" representedClassName="Training" syncable="YES" codeGenerationType="class">
+        <attribute name="dateTimeStart" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="duration" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeartRateMeasurement" inverseName="training" inverseEntity="HeartRateMeasurement" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Settings" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="HeartRateMeasurement" positionX="-63" positionY="101" width="128" height="88"/>
+        <element name="Training" positionX="133" positionY="101" width="128" height="88"/>
     </elements>
 </model>

@@ -15,11 +15,29 @@ class TrainingDataViewController: UIViewController {
     @IBOutlet private weak var minBPMLabel: UILabel!
     @IBOutlet private weak var avgBPMLabel: UILabel!
     @IBOutlet private weak var fatBuriningTimeLabel: UILabel!
-    
+
+    var training: Training!
+
+    private var dataSource: TrainingDataSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        dataSource = TrainingDataSource(training: training)
+
+        trainingDurationLabel.text = dataSource.durationText
+        maxBPMLabel.text = String(dataSource.maxHeartRate)
+        minBPMLabel.text = String(dataSource.minHeartRate)
+        avgBPMLabel.text = String(dataSource.avgHeartRate)
+        fatBuriningTimeLabel.text =
+            "\(dataSource.fatBurnZoneTimeText) (\(dataSource.fatBurnZonePercent)%)"
+
+        trainingGraphView.heartRateLevels =
+            (rest: dataSource.settingsDataSource.restHeartRate,
+             max: dataSource.settingsDataSource.maxHeartRate,
+             minFatBurn: dataSource.settingsDataSource.minFatBurnHeartRate,
+             maxFatBurn: dataSource.settingsDataSource.maxFatBurnHeartRate)
+        trainingGraphView.heartRateValues = dataSource.heartRates
     }
 
     override func didReceiveMemoryWarning() {

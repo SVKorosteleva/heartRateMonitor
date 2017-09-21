@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA08EA471F71A74800F6845D /* TrainingsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08EA461F71A74800F6845D /* TrainingsStorageManager.swift */; };
+		AA08EA491F71CBC300F6845D /* TrainingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08EA481F71CBC300F6845D /* TrainingDataSource.swift */; };
 		AA1B77BE1F6763B000D86ACB /* TrainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */; };
 		AA1B77C01F6770A900D86ACB /* TrainingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */; };
 		AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA08EA461F71A74800F6845D /* TrainingsStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsStorageManager.swift; sourceTree = "<group>"; };
+		AA08EA481F71CBC300F6845D /* TrainingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataSource.swift; sourceTree = "<group>"; };
 		AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataViewController.swift; sourceTree = "<group>"; };
 		AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingGraphView.swift; sourceTree = "<group>"; };
 		AA3E33EB1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartRateDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 				AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */,
 				AA3E33ED1F3CD45D0000FD2E /* DataStorageManager.swift */,
 				AA3E33EF1F3D17850000FD2E /* SettingsStorageManager.swift */,
+				AA08EA461F71A74800F6845D /* TrainingsStorageManager.swift */,
 			);
 			name = DataStorage;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			children = (
 				AA9191111F39326100A79C83 /* SettingsDataSource.swift */,
 				AA6AAD4D1F0ED3FA00A0B754 /* HeartRateDataSource.swift */,
+				AA08EA481F71CBC300F6845D /* TrainingDataSource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -290,12 +296,14 @@
 				AAC1700C1F14218A001BB817 /* StartStopButton.swift in Sources */,
 				AA3E33EE1F3CD45D0000FD2E /* DataStorageManager.swift in Sources */,
 				AA9191101F392B3F00A79C83 /* PlusMinusButton.swift in Sources */,
+				AA08EA471F71A74800F6845D /* TrainingsStorageManager.swift in Sources */,
 				AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */,
 				AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */,
 				AA1B77C01F6770A900D86ACB /* TrainingGraphView.swift in Sources */,
 				AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */,
 				AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */,
 				AA6AAD4E1F0ED3FA00A0B754 /* HeartRateDataSource.swift in Sources */,
+				AA08EA491F71CBC300F6845D /* TrainingDataSource.swift in Sources */,
 				AA875FA31F06CF4900157DAF /* AppDelegate.swift in Sources */,
 				AA875FA51F06CF4900157DAF /* HeartRateViewController.swift in Sources */,
 				AA1B77BE1F6763B000D86ACB /* TrainingDataViewController.swift in Sources */,

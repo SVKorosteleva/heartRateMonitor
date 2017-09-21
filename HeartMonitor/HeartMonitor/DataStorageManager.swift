@@ -12,6 +12,7 @@ class DataStorageManager {
     private(set) static var shared = DataStorageManager()
 
     private(set) var settingsManager: SettingsStorageManager?
+    private(set) var trainingsManager: TrainingsStorageManager?
 
     private lazy var model: NSManagedObjectModel? = self.dataModel()
     private lazy var storeCoordinator: NSPersistentStoreCoordinator? =
@@ -27,6 +28,7 @@ class DataStorageManager {
 
         if let context = self.context {
             self.settingsManager = SettingsStorageManager(context: context)
+            self.trainingsManager = TrainingsStorageManager(context: context)
         }
     }
 

@@ -295,6 +295,7 @@
                         <outlet property="minFatBurnCenterXConstraint" destination="2hE-NT-o11" id="f3x-iU-ToH"/>
                         <outlet property="minFatBurnHeartRateLabel" destination="INb-ES-SC8" id="AEg-R3-n12"/>
                         <outlet property="minHeartRateLabel" destination="Ctu-9Z-knf" id="Pyd-eX-MOz"/>
+                        <outlet property="showTrainingDataButton" destination="yuh-N9-dpZ" id="d1e-a2-Vbl"/>
                         <outlet property="startButton" destination="FmF-o2-mzp" id="swJ-n5-Icd"/>
                         <outlet property="stopButton" destination="hZ6-un-IsZ" id="8Y1-8h-LPd"/>
                         <outlet property="trainingTimeLabel" destination="bgv-xj-nFh" id="0Ss-9S-LEF"/>

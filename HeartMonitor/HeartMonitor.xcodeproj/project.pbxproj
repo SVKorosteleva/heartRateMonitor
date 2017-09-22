@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA08EA471F71A74800F6845D /* TrainingsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08EA461F71A74800F6845D /* TrainingsStorageManager.swift */; };
 		AA08EA491F71CBC300F6845D /* TrainingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08EA481F71CBC300F6845D /* TrainingDataSource.swift */; };
+		AA15E1F51F75A3CC00721404 /* TrainingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15E1F41F75A3CC00721404 /* TrainingsListViewController.swift */; };
 		AA1B77BE1F6763B000D86ACB /* TrainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */; };
 		AA1B77C01F6770A900D86ACB /* TrainingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */; };
 		AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA3E33EA1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		AA08EA461F71A74800F6845D /* TrainingsStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsStorageManager.swift; sourceTree = "<group>"; };
 		AA08EA481F71CBC300F6845D /* TrainingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataSource.swift; sourceTree = "<group>"; };
+		AA15E1F41F75A3CC00721404 /* TrainingsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsListViewController.swift; sourceTree = "<group>"; };
 		AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataViewController.swift; sourceTree = "<group>"; };
 		AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingGraphView.swift; sourceTree = "<group>"; };
 		AA3E33EB1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartRateDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				AA1B77BD1F6763B000D86ACB /* TrainingDataViewController.swift */,
 				AA1B77BF1F6770A900D86ACB /* TrainingGraphView.swift */,
+				AA15E1F41F75A3CC00721404 /* TrainingsListViewController.swift */,
 			);
 			name = TrainingData;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				AA08EA471F71A74800F6845D /* TrainingsStorageManager.swift in Sources */,
 				AA3E33F01F3D17850000FD2E /* SettingsStorageManager.swift in Sources */,
 				AA875FA71F06CF4900157DAF /* SettingsViewController.swift in Sources */,
+				AA15E1F51F75A3CC00721404 /* TrainingsListViewController.swift in Sources */,
 				AA1B77C01F6770A900D86ACB /* TrainingGraphView.swift in Sources */,
 				AA875FC61F06D13E00157DAF /* HeartRateView.swift in Sources */,
 				AA3E33EC1F3A5FE10000FD2E /* HeartRateDataModel.xcdatamodeld in Sources */,

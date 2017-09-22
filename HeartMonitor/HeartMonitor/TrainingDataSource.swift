@@ -15,7 +15,7 @@ class TrainingDataSource {
     }
 
     var durationText: String {
-        return text(forTimeInSeconds: UInt32(training.duration))
+        return TrainingDataSource.text(forTimeInSeconds: UInt32(training.duration))
     }
 
     var maxHeartRate: UInt32 {
@@ -32,7 +32,7 @@ class TrainingDataSource {
     }
 
     var fatBurnZoneTimeText: String {
-        return text(forTimeInSeconds: fatBurnTime)
+        return TrainingDataSource.text(forTimeInSeconds: fatBurnTime)
     }
 
     var fatBurnZonePercent: Int {
@@ -92,11 +92,7 @@ class TrainingDataSource {
         return result
     }
 
-    init(training: Training) {
-        self.training = training
-    }
-
-    private func text(forTimeInSeconds time: UInt32) -> String {
+    class func text(forTimeInSeconds time: UInt32) -> String {
         var result = ""
 
         let hours = time / 3600
@@ -119,8 +115,12 @@ class TrainingDataSource {
         }
 
         result += "\(seconds) s"
-        
+
         return result
+    }
+
+    init(training: Training) {
+        self.training = training
     }
 
 }

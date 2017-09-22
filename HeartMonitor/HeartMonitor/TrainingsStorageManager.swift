@@ -25,7 +25,7 @@ class TrainingsStorageManager {
             = NSEntityDescription
                 .insertNewObject(forEntityName: "Training",
                                  into: context) as? Training else { return nil }
-        training.dateTimeStart = Date() as NSDate
+        training.dateTimeStart = Date()
         training.duration = 0
 
         do {
@@ -57,7 +57,7 @@ class TrainingsStorageManager {
     }
 
     func trainings() -> [Training] {
-        let fetchRequest = NSFetchRequest<Training>(entityName: "Trainings")
+        let fetchRequest = NSFetchRequest<Training>(entityName: "Training")
         guard let trainings = try? context.fetch(fetchRequest) else {
             return []
         }

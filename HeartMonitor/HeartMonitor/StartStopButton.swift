@@ -13,10 +13,10 @@ class StartStopButton: UIButton {
 
     @IBInspectable var start: Bool = true
 
-    private let startFromColor = UIColor(colorLiteralRed: 40.0 / 255.0, green: 255.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
-    private let startToColor = UIColor(colorLiteralRed: 169.0 / 255.0, green: 255.0 / 255.0, blue: 205.0 / 255.0, alpha: 1.0)
-    private let stopFromColor = UIColor(colorLiteralRed: 255.0 / 255.0, green: 35.0 / 255.0, blue: 94.0 / 255.0, alpha: 1.0)
-    private let stopToColor = UIColor(colorLiteralRed: 255.0 / 255.0, green: 153.0 / 255.0, blue: 156.0 / 255.0, alpha: 1.0)
+    private let startFromColor = UIColor(red: 40.0 / 255.0, green: 255.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
+    private let startToColor = UIColor(red: 169.0 / 255.0, green: 255.0 / 255.0, blue: 205.0 / 255.0, alpha: 1.0)
+    private let stopFromColor = UIColor(red: 255.0 / 255.0, green: 35.0 / 255.0, blue: 94.0 / 255.0, alpha: 1.0)
+    private let stopToColor = UIColor(red: 255.0 / 255.0, green: 153.0 / 255.0, blue: 156.0 / 255.0, alpha: 1.0)
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

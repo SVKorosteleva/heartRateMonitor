@@ -10,11 +10,11 @@ import UIKit
 
 @IBDesignable
 class HeartRateView: UIView {
-    @IBInspectable var fromColor: UIColor = UIColor(colorLiteralRed: 92.0 / 255.0,
+    @IBInspectable var fromColor: UIColor = UIColor(red: 92.0 / 255.0,
                                            green: 255.0 / 255.0,
                                            blue: 217.0 / 255.0,
                                            alpha: 1.0)
-    @IBInspectable var toColor: UIColor = UIColor(colorLiteralRed: 202.0 / 255.0,
+    @IBInspectable var toColor: UIColor = UIColor(red: 202.0 / 255.0,
                                          green: 252.0 / 255.0,
                                          blue: 248.0 / 255.0,
                                          alpha: 1.0)

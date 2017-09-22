@@ -84,6 +84,10 @@ class HeartRateDataSource: NSObject {
 
     func stopBluetooth() {
         centralManager?.stopScan()
+        delegate?.updated(heartRate: 0)
+        delegate?.updated(deviceInfo: "Connected: NO")
+        delegate?.updated(batteryLevel: 100)
+        delegate?.updated(btStatus: .off)
         centralManager = nil
     }
 

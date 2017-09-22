@@ -141,6 +141,7 @@ class HeartRateViewController: UIViewController {
                 currentTraining =
                     DataStorageManager.shared.trainingsManager?.createTraining()
                 showTrainingDataButton.isHidden = false
+                saveTrainingData()
             }
 
             trainingTimer =

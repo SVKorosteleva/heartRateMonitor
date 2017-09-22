@@ -82,6 +82,11 @@ class HeartRateDataSource: NSObject {
         delegate?.updated(btStatus: .searching)
     }
 
+    func stopBluetooth() {
+        centralManager?.stopScan()
+        centralManager = nil
+    }
+
     //MARK: CBCharacteristic Helpers
 
     fileprivate func getHeartBPMData(from characteristic: CBCharacteristic, error: Error?) {

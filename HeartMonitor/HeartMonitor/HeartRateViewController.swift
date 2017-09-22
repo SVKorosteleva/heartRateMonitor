@@ -15,10 +15,12 @@ class HeartRateViewController: UIViewController {
     @IBOutlet fileprivate weak var btHrmSearchActivityIndicator: UIActivityIndicatorView!
     @IBOutlet fileprivate weak var btHrmStatusLabel: UILabel!
     @IBOutlet fileprivate weak var btHrmStatusStackView: UIStackView!
+    @IBOutlet fileprivate weak var btHrmStartSearchButton: UIButton!
 
     @IBOutlet fileprivate weak var batteryLevelLabel: UILabel!
     @IBOutlet fileprivate weak var batteryLevelStackView: UIStackView!
 
+    @IBOutlet fileprivate weak var trainingStackView: UIStackView!
     @IBOutlet fileprivate weak var startButton: StartStopButton!
     @IBOutlet fileprivate weak var stopButton: StartStopButton!
     @IBOutlet fileprivate weak var trainingTimeLabel: UILabel!
@@ -46,8 +48,13 @@ class HeartRateViewController: UIViewController {
     private var trainingDuration: TimeInterval = 0
     private var currentTraining: Training?
 
+
+    // MARK: View Controller methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        showStartSearchButton(true)
 
         batteryLevelLabel.layer.cornerRadius = 18.0
         batteryLevelLabel.clipsToBounds = true
@@ -60,7 +67,6 @@ class HeartRateViewController: UIViewController {
         showTrainingDataButton.isHidden = true
 
         dataSource.delegate = self
-        dataSource.loadBluetooth()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +92,8 @@ class HeartRateViewController: UIViewController {
             = segue.destination as? TrainingDataViewController else { return }
         trainingDataVC.training = currentTraining
     }
+
+    // MARK: Actions
 
     @objc fileprivate func doHeartBit() {
         let layer = heartRateView.layer
@@ -115,7 +123,7 @@ class HeartRateViewController: UIViewController {
                             to: currentTraining)
     }
 
-    @IBAction func startButtonPressed(_ sender: Any) {
+    @IBAction fileprivate func startButtonPressed(_ sender: Any) {
         let trainingOngoing = trainingTimer?.isValid ?? false
         trainingTimer?.invalidate()
         saveDataTimer?.invalidate()
@@ -152,14 +160,26 @@ class HeartRateViewController: UIViewController {
     }
 
 
-    @IBAction func stopButtonPressed(_ sender: Any) {
+    @IBAction fileprivate func stopButtonPressed(_ sender: Any) {
         trainingTimer?.invalidate()
         trainingTimer = nil
         startTrainingTime = nil
         trainingDuration = 0
         startButton.setTitle("Start", for: .normal)
         stopButton.isHidden = true
+
+        dataSource.stopBluetooth()
+
+        showStartSearchButton(true)
+        performSegue(withIdentifier: "showTrainingResults", sender: sender)
     }
+
+    @IBAction fileprivate func btHrmStartSearchButtonPressed(_ sender: Any) {
+        dataSource.loadBluetooth()
+        showStartSearchButton(false)
+    }
+
+    // MARK: Helpers
 
     fileprivate func text(btStatus: BTStatus) -> String {
         switch btStatus {
@@ -197,6 +217,18 @@ class HeartRateViewController: UIViewController {
 
     fileprivate func timeString(forTimeUnit unit: Int) -> String {
         return "\(unit < 10 ? "0" : "")\(unit)"
+    }
+
+    fileprivate func showStartSearchButton(_ show: Bool) {
+        btHrmStatusLabel.isHidden = show
+        if show {
+            btHrmSearchActivityIndicator.stopAnimating()
+        } else {
+            btHrmSearchActivityIndicator.startAnimating()
+        }
+
+        btHrmStartSearchButton.isHidden = !show
+        trainingStackView.isHidden = show
     }
 
 }

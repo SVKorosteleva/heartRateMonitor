@@ -119,6 +119,14 @@ class TrainingDataSource {
         return result
     }
 
+    class func text(forDate date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+
+        return dateFormatter.string(from: date)
+    }
+
     init(training: Training) {
         self.training = training
     }

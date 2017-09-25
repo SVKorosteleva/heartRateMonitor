@@ -11,10 +11,12 @@ import UIKit
 class TrainingDataViewController: UIViewController {
     @IBOutlet private weak var trainingGraphView: TrainingGraphView!
     @IBOutlet private weak var trainingDurationLabel: UILabel!
+    @IBOutlet private weak var trainingStartDateLabel: UILabel!
     @IBOutlet private weak var maxBPMLabel: UILabel!
     @IBOutlet private weak var minBPMLabel: UILabel!
     @IBOutlet private weak var avgBPMLabel: UILabel!
     @IBOutlet private weak var fatBuriningTimeLabel: UILabel!
+    @IBOutlet private weak var closeButton: UIButton!
 
     var training: Training!
 
@@ -25,6 +27,8 @@ class TrainingDataViewController: UIViewController {
 
         dataSource = TrainingDataSource(training: training)
 
+        trainingStartDateLabel.text =
+            TrainingDataSource.text(forDate: training.dateTimeStart ?? Date())
         trainingDurationLabel.text = dataSource.durationText
         maxBPMLabel.text = String(dataSource.maxHeartRate)
         minBPMLabel.text = String(dataSource.minHeartRate)
@@ -37,7 +41,14 @@ class TrainingDataViewController: UIViewController {
              max: dataSource.settingsDataSource.maxHeartRate,
              minFatBurn: dataSource.settingsDataSource.minFatBurnHeartRate,
              maxFatBurn: dataSource.settingsDataSource.maxFatBurnHeartRate)
-        trainingGraphView.heartRateValues = dataSource.heartRates
+        trainingGraphView.heartRateValues =
+            dataSource.heartRates
+                .filter { $0.heartRate > SettingsDataSource.shared.restHeartRate }
+        
+        title = "Training"
+        if navigationController != nil {
+            closeButton.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

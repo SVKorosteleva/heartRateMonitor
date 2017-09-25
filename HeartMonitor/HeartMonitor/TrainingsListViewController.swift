@@ -16,6 +16,8 @@ class TrainingsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Trainings"
+
         trainings = DataStorageManager.shared.trainingsManager?.trainings() ?? []
         trainings = trainings.filter { $0.duration > 0 }
         tableView.reloadData()
@@ -55,15 +57,19 @@ extension TrainingsListViewController: UITableViewDataSource {
                                             alpha: 1.0)
 
         let training = trainings[indexPath.row]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
 
         cell.textLabel?.text =
-            "\(dateFormatter.string(from: training.dateTimeStart ?? Date())), " +
+            "\(TrainingDataSource.text(forDate: training.dateTimeStart ?? Date())), " +
             "\(TrainingDataSource.text(forTimeInSeconds: UInt32(training.duration)))"
         return cell
     }
 
+}
 
+extension TrainingsListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
 }

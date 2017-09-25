@@ -592,7 +592,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GU0-XD-gtt">
-                                <rect key="frame" x="37.5" y="30" width="300" height="255.5"/>
+                                <rect key="frame" x="37.5" y="70" width="300" height="255.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EKq-ne-5ZQ">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="131"/>
@@ -905,7 +905,7 @@
                             <constraint firstItem="2J6-cR-3W1" firstAttribute="top" secondItem="Emy-wa-hXx" secondAttribute="bottom" id="y0l-df-yhW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" id="Uk4-sB-ez4"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="StatisticsTab" id="Uk4-sB-ez4"/>
                     <connections>
                         <outlet property="tableView" destination="fhe-Tp-ggO" id="WV7-El-wcT"/>
                     </connections>
@@ -940,6 +940,7 @@
     <resources>
         <image name="HeartRateTab" width="25" height="25"/>
         <image name="SettingsTab" width="25" height="25"/>
+        <image name="StatisticsTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UlR-EL-rHC"/>
